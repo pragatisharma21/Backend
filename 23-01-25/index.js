@@ -1,13 +1,18 @@
-import express from "express"
-import dotenv from "dotenv"
+import express from "express";
+import dotenv from "dotenv";
+import { connectDb } from "./src/config/db.js";
+import productRoute from "./src/Routes/product.route.js";
 
-dotenv.config()
-const app = express()
-app.use(express.json())
+dotenv.config();
+const PORT = process.env.PORT || 8000;
 
+const app = express();
+app.use(express.json());
 
-const PORT = process.env.PORT || 8000
+connectDb();
 
-app.listen(PORT, () =>{
-    console.log(`server is running on port ${PORT}`)
-})
+app.use("/product", productRoute);
+
+app.listen(PORT, () => {
+  console.log(`server is running on port ${PORT}`);
+});
