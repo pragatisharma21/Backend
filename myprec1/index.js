@@ -1,7 +1,7 @@
 import express from "express"
 import dotenv from "dotenv"
 import { connection } from "./src/Utils/db.js"
-import { signUUp } from "./src/Controller/user.controller.js"
+import userrRoutes from "./src/Routes/user.routes.js"
 
 
 dotenv.config()
@@ -9,7 +9,8 @@ dotenv.config()
 const app = express()
 app.use(express.json())
 connection()
-app.use("/user", signUUp)
+app.use("/user", userrRoutes)
+
 const PORT = process.env.PORT || 8080
 
 
