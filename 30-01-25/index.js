@@ -3,10 +3,15 @@ import dotenv from "dotenv";
 import CORS from "cors";
 import { connectDb } from "./src/Config/db.config.js";
 import userRouter from "./src/Routes/user.routes.js"
+import cron from "node-cron"
 
 dotenv.config();
 
 const PORT = process.env.PORT || 5000;
+let task = cron.schedule("* * * * *", ()=>{
+    console.log("server cron is schedule")
+})
+task.stop()
 
 const app = express();
 app.use(express.json());
