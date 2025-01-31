@@ -4,6 +4,10 @@ import CORS from "cors";
 import { connectDb } from "./src/Config/db.config.js";
 import userRouter from "./src/Routes/user.routes.js"
 import cron from "node-cron"
+import swaggerUi from "swagger-ui-express"
+import swaggerDocument from "./src/Config/swagger.js" assert { type: "json" }; 
+
+
 
 dotenv.config();
 
@@ -13,8 +17,10 @@ let task = cron.schedule("* * * * *", ()=>{
 })
 task.stop()
 
+
 const app = express();
 app.use(express.json());
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use(CORS({
     origin: ["*", process.env.CLIENT_URI]

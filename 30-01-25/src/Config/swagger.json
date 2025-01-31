@@ -1,0 +1,42 @@
+// {
+//     "openapi": "3.0.0",
+//     "info": {
+//       "title": "Finance App API",
+//       "description": "This is the API documentation for the Finance App.",
+//       "version": "1.0.0"
+//     },
+//     "servers": [
+//       {
+//         "url": "http://localhost:8080",
+//         "description": "Local server"
+//       }
+//     ],
+//     "paths": {
+//       "/users": {
+//         "get": {
+//           "summary": "Get all users",
+//           "description": "Fetches a list of all users.",
+//           "responses": {
+//             "200": {
+//               "description": "List of users",
+//               "content": {
+//                 "application/json": {
+//                   "schema": {
+//                     "type": "array",
+//                     "items": {
+//                       "type": "object",
+//                       "properties": {
+//                         "id": { "type": "string" },
+//                         "name": { "type": "string" },
+//                         "email": { "type": "string" }
+//                       }
+//                     }
+//                   }
+//                 }
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
